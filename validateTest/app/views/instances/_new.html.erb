@@ -1,0 +1,10 @@
+<h1>Instances#_new</h1>
+<p>Find me in app/views/instances/_new.html.erb</p>
+
+<%= form_for @db_instance, url: instances_path, method: :post do |f| %>
+  <%= f.text_field :identifier %>
+  <%= f.text_field :dbName %>
+  <%= f.text_field :autoUpdate %>
+  <%= f.submit %>
+<% end %>
+
