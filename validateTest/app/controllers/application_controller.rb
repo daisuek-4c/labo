@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 #    session["cloudn.rdb"] =true
  
     # OPへリダイレクト 
-    redirect_to get_openid_redirect_url if session["cloudn.rdb"] == nil
+    return redirect_openid_redirect_url if session["cloudn.rdb"].nil?
  
     # セッションにAPIキー情報は入れないので、都度API実行で取得
     api_key = get_api_key
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     logger.debug "session check before action : end"
   end
 
-  def get_openid_redirect_url
+  def redirect_openid_redirect_url
       begin
         # リダイレクトURLを取得
         redirect_url = openid_request
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
         logger.fatal "hoge"
  
       else
-        return redirect_url
+        redirect_to redirect_url
  
       end
   end
